@@ -16,7 +16,6 @@ class Configure(Serializable):
         '',
         'random:random.txt',
         '',
-        'server_list',
     ]
     module_settings: Dict[str, dict] = {
         'motd': {
@@ -25,10 +24,6 @@ class Configure(Serializable):
         'day': {
             'plugin': 'daycount_nbt',
             'entry': 'get_day_text'
-        },
-        'server_list': {
-            '$§l子服1': 'server1',
-            '§a子服2': 'server2'
         },
         'json': {
             'preload': True
