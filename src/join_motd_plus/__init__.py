@@ -119,10 +119,7 @@ def register_command():
         return Literal(literal).requires(lambda src: src.has_permission(lvl), lambda: psi.tr('join_motd_plus.perm_denied'))
     psi.register_command(get_literal_node('!!motd').runs(
         lambda src: display_all(src.player if src.is_player else None)).then(get_literal_node('reload').runs(load_config)))
-    psi.register_command(get_literal_node('!!server').runs(
-        lambda src: display_servers(src.player if src.is_player else None)))
     psi.register_help_message('!!motd [reload]', psi.tr('join_motd_plus.help_motd'))
-    psi.register_help_message('!!server', psi.tr('join_motd_plus.help_server'))
 
 
 def on_load(server: PluginServerInterface, prev):
