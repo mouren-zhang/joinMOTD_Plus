@@ -32,26 +32,6 @@ def day():
         return psi.tr('join_motd_plus.day_failed')
 
 
-def server_list():
-    l = config.module_settings['server_list']
-    output = []
-    for i in l:
-        if i.startswith('$'):
-            output.append(RTextList(
-                '[',
-                RText(i[1:]).h(psi.tr('join_motd_plus.current_server')),
-                '] '
-            ))
-        else:
-            output.append(RTextList(
-                '[',
-                RText(i).h(psi.tr('join_motd_plus.click_to_join').replace(
-                    'server', l[i])).c(RAction.run_command, f'/server {l[i]}'),
-                '] '
-            ))
-    return RTextList(*output)
-
-
 @new_thread('joinMOTD++')
 def update_json_cache():
     global json_cache_lock, json_cache, json_list
@@ -100,8 +80,6 @@ def display_all(player=None):
             output.append(motd(_player))
         elif i == 'day':
             output.append(day())
-        elif i == 'server_list':
-            output.append(server_list())
         elif i.startswith('json'):
             output.append(get_json(i.split(':')[1]))
         elif i.startswith('random'):
@@ -115,14 +93,6 @@ def display_all(player=None):
             psi.tell(_player, i)
         else:
             tell_console(i)
-
-
-def display_servers(player: str = None):
-    output = server_list()
-    if player:
-        psi.tell(player, output)
-    else:
-        tell_console(output)
 
 
 def tell_console(msg):
