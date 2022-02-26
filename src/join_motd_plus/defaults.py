@@ -13,6 +13,7 @@ class Configure(Serializable):
     display_list: List[str] = [
         'motd',
         'day',
+        '[自定义文本] 这是一段没卵用的垃圾话。',
         '',
         'random:random.txt',
         '',
