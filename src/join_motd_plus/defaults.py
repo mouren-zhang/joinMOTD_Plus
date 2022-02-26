@@ -14,7 +14,6 @@ class Configure(Serializable):
         'motd',
         'day',
         '',
-        'json:hitokoto',
         'random:random.txt',
         '',
         'server_list',
@@ -40,13 +39,6 @@ class Configure(Serializable):
     }
 
 
-JsonList = {
-    'hitokoto': {
-        'prefix': '[§a一言§r]',
-        'addr': 'https://v1.hitokoto.cn',
-        'path': 'hitokoto'
-    }
-}
 
 DefaultRandom = '''
 §e§lAlex3236, yyds!
