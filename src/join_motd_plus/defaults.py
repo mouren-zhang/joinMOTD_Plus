@@ -16,7 +16,6 @@ class Configure(Serializable):
         '',
         'json:hitokoto',
         'random:random.txt',
-        '[自定义文本] 这是一段没卵用的垃圾话。',
         '',
         'server_list',
     ]
