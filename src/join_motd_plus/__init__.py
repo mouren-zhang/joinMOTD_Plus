@@ -52,23 +52,6 @@ def server_list():
     return RTextList(*output)
 
 
-def parse_json(addr, path):
-    try:
-        req = requests.get(addr, timeout=5).text
-    except requests.exceptions:
-        print_exc()
-        return psi.tr('join_motd_plus.json_failed')
-    try:
-        req_json = json.loads(req)
-        for i in path.strip().split('/'):
-            req_json = req_json.get(i, dict())
-        return req_json
-    except ValueError:
-        psi.logger.error('自定义 Json 解析错误')
-        print_exc()
-        return req
-
-
 @new_thread('joinMOTD++')
 def update_json_cache():
     global json_cache_lock, json_cache, json_list
