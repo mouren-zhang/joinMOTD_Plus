@@ -3,7 +3,7 @@ import os
 import random
 from threading import Lock
 from traceback import print_exc
-
+import datetime
 import requests
 from mcdreforged.api.all import *
 
@@ -21,9 +21,13 @@ def motd(player):
 
 def day():
     try:
-        return getattr(psi.get_plugin_instance(config.module_settings['day']['plugin']), config.module_settings['day']['entry'])()
+        today = datetime.date.today()
+        d1 = datetime.datetime(2022, 1, 1)  #这里面填开服日期
+        d2 = datetime.datetime(today.year, today.month, today.day)
+        d3 = (d2 - d1).days
+        return ('本服务器已经运行了：'+str(d3)+'天')
     except Exception:
-        print('天数获取失败')
+        print('天气获取失败，请向管理反馈')
         print_exc()
         return psi.tr('join_motd_plus.day_failed')
 
