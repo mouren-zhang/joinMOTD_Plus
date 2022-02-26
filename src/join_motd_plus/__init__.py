@@ -4,7 +4,6 @@ import random
 from threading import Lock
 from traceback import print_exc
 import datetime
-import requests
 from mcdreforged.api.all import *
 
 from join_motd_plus.defaults import *
